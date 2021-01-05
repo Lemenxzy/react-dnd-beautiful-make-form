@@ -7,7 +7,7 @@
  */
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { droppableBtn } from '../com-setting/DroppableIDs';
-import { Icon } from 'antd';
+import Icon, {DoubleLeftOutlined} from '@ant-design/icons';
 import { Tabs, Button, Empty, Tooltip } from 'antd';
 const { TabPane } = Tabs;
 
@@ -34,7 +34,9 @@ export const LeftWrap = ({btnList, addFormItem, hiddenLeftHandle}) => {
             <>
                 <Tabs key={'tab---2'} tabBarExtraContent={
                     <Tooltip placement="right" title={`收起`}>
-                        <Button icon="double-left" onClick={() => {
+                        <Button icon={
+                            <DoubleLeftOutlined />
+                        } onClick={() => {
                             hiddenLeftHandle(false)
                         }} />
                     </Tooltip>

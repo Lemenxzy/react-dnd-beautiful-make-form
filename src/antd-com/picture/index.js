@@ -6,7 +6,9 @@
  * @Last Modified Time 2020/12/23
  */
 
-import { Icon } from 'antd';
+import {
+    FileImageOutlined,
+} from '@ant-design/icons';
 
 const Picture = () => {
     return <div>
@@ -16,7 +18,7 @@ const Picture = () => {
 
 export const ViewPicture = () => {
     return <div className={'pic-wrap'}>
-        <Icon type="file-image" className={'pic-file-image'} />
+        <FileImageOutlined className={'pic-file-image'} />
         <p className={'pic-title'}>image.png</p>
     </div>
 }

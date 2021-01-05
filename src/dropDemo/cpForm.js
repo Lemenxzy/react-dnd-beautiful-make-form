@@ -5,7 +5,7 @@
  * @Last Modified by zhiyuan.xu
  * @Last Modified Time 2020/12/22
  */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Form } from 'antd'
 import { getSettingData, ComMap } from '../com-setting/cpSetting';
 import { doubleHandle } from '../dropDemo/util';
@@ -17,46 +17,39 @@ const cpDisPatch = (pid, value, ChangeCpFormData) => {
 // 防抖
 const doubleDis = doubleHandle(cpDisPatch, 400)
 
-const onValuesChange = (props, changedValues, allValues) => {
-    const pId = props.rightData.data.id;
-    doubleDis(pId, changedValues, props.ChangeCpFormData)
-};
 
-class CpForm extends React.Component {
-   constructor() {
-       super();
-       this.ComData = getSettingData();
-   }
+const CpForm = (props) => {
 
-    componentDidMount() {
-        this.props.setPvFormValue(this.props.form, this.props.rightData.data.id)
+   const ComData = useRef( getSettingData() )
+
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+        props.setPvFormValue(form, props.rightData.data.id)
+    }, [])
+
+
+    useEffect(() => {
+        props.setPvFormValue(form, props.rightData.data.id)
+    }, [props.rightData.data.id])
+
+    const onValuesChange = (changedValues, allValues) => {
+        const pId = props.rightData.data.id;
+        doubleDis(pId, changedValues, props.ChangeCpFormData)
     }
 
-   componentDidUpdate(prevProps) {
-       if (prevProps.rightData) {
-           // 切换了id
-           if (prevProps.rightData.data.id !== this.props.rightData.data.id) {
-               this.props.setPvFormValue(this.props.form, this.props.rightData.data.id)
-           }
-       }
-   }
-
-
-    render() {
-       const { getFieldDecorator } = this.props.form;
-       return <Form>
-           {
-               this.ComData.map((item, index) => {
-                   const Com = ComMap[item.name];
-                   return <Form.Item key={`${index}asd`} label={item.label}>
-                       {getFieldDecorator(item.name, item.Decorator)(
-                           <Com />
-                       )}
-                   </Form.Item>
-               })
-           }
-       </Form>
-   }
+    return <Form form={form} onValuesChange={
+        onValuesChange
+    }>
+        {
+            ComData.current.map((item, index) => {
+                const Com = ComMap[item.name];
+                return <Form.Item key={`${index}asd`} name={item.name} {...item.Decorator} label={item.label}>
+                    <Com />
+                </Form.Item>
+            })
+        }
+    </Form>
 }
 
-export default Form.create({ onValuesChange })(CpForm);
+export default CpForm

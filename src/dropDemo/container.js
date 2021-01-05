@@ -19,6 +19,7 @@ import { getFormData, getCpvData } from '../dropDemo/util';
 import { testData } from '../testData';
 import cloneDeep from 'clone-deep';
 import { madeTemplateData } from '../com-setting/templateJsonSetting';
+import {DoubleLeftOutlined, DoubleRightOutlined} from '@ant-design/icons';
 
 export const Container = function Container() {
     const [moveList, setMoveList] = useState([])
@@ -231,7 +232,9 @@ export const Container = function Container() {
                         </span>
                     </div>
                     <Tooltip placement="bottom" title={`收起`}>
-                        <Button icon="double-right" onClick={() => {
+                        <Button icon={
+                            <DoubleRightOutlined />
+                        } onClick={() => {
                             hiddenRightHandle(false)
                         }} />
                     </Tooltip>
@@ -253,7 +256,7 @@ export const Container = function Container() {
                         </span>
                     </div>
                     <Tooltip placement="left" title={`收起`}>
-                        <Button icon="double-right" onClick={() => {
+                        <Button icon={ <DoubleRightOutlined /> } onClick={() => {
                             hiddenRightHandle(false)
                         }} />
                     </Tooltip>
@@ -354,7 +357,7 @@ export const Container = function Container() {
                             leftNav ? {display: 'none'} : {}
                         }>
                             <Tooltip placement="right" title={`展开`}>
-                                <Button icon="double-right" onClick={() => {
+                                <Button icon={ <DoubleRightOutlined /> } onClick={() => {
                                     hiddenLeftHandle(true)
                                 }} />
                             </Tooltip>
@@ -381,7 +384,7 @@ export const Container = function Container() {
                                 <div style={{ width:'100%' }}>
                                     <div style={{ display:'flex', justifyContent:'flex-end' }}>
                                         <Tooltip placement="bottom" title={`收起`}>
-                                            <Button icon="double-right" onClick={() => {
+                                            <Button icon={ <DoubleRightOutlined /> } onClick={() => {
                                                 hiddenRightHandle(false)
                                             }} />
                                         </Tooltip>
@@ -396,7 +399,9 @@ export const Container = function Container() {
                         rightNav? {display: 'none'} : {}
                     }>
                         <Tooltip placement="right" title={`展开`}>
-                            <Button icon="double-left" onClick={() => {
+                            <Button icon={
+                                <DoubleLeftOutlined />
+                            } onClick={() => {
                                 hiddenRightHandle(true)
                             }} />
                         </Tooltip>

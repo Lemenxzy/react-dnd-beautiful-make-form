@@ -6,7 +6,11 @@
  * @Last Modified Time 2020/12/18
  */
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { Empty, Icon, Tooltip } from 'antd'
+import { Empty, Tooltip } from 'antd'
+import {
+    DragOutlined,
+    DeleteOutlined
+} from '@ant-design/icons';
 import { useRef } from 'react';
 import { droppableFrom } from '../com-setting/DroppableIDs';
 import '../antd-com/commonCompetent/viewCom.scss';
@@ -87,11 +91,11 @@ export const ContentWrap = ({ moveList, setActive, deleteHandle,
                                                             {...provided.dragHandleProps}
                                                             className={'ico-btn sort-btn'}
                                                         >
-                                                            <Icon type="drag" />
+                                                            <DragOutlined />
                                                         </div>
                                                     </Tooltip>
                                                     <Tooltip placement="top" onClick={(event) => { event.stopPropagation(); deleteHandle(item.id) } } title={'删除选项'}>
-                                                        <Icon className={'ico-btn delete-btn'} type="delete" />
+                                                        <DeleteOutlined className={'ico-btn delete-btn'} />
                                                     </Tooltip>
                                                 </div>
                                             </div>

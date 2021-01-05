@@ -5,8 +5,9 @@
  * @Last Modified by zhiyuan.xu
  * @Last Modified Time 2020/12/24
  */
-import { Icon } from 'antd'
-
+import {
+    PlusSquareOutlined
+} from '@ant-design/icons';
 
 const InputAndAdd = () => {
 
@@ -15,7 +16,7 @@ const InputAndAdd = () => {
 export const ViewInputAndAdd = () => {
     return <div className={'inputAndAdd-wrap'}>
         <div className={'input'}></div>
-        <Icon type="plus-square" className={'icon-add'} />
+        <PlusSquareOutlined className={'icon-add'}/>
     </div>
 }
 

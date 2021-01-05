@@ -5,7 +5,14 @@
  * @Last Modified by zhiyuan.xu
  * @Last Modified Time 2020/12/23
  */
-import { Icon, Modal, Input, Tooltip } from 'antd';
+import { Modal, Input, Tooltip } from 'antd';
+import {
+    BarsOutlined,
+    SettingOutlined,
+    DeleteOutlined,
+    FileAddOutlined,
+    DiffOutlined,
+} from '@ant-design/icons';
 import { useState, useEffect,useRef } from 'react'
 import ContentEditable from 'react-contenteditable'
 import  { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
@@ -135,7 +142,7 @@ const ViewValueCom = ({
                                                         {...provided.dragHandleProps}
                                                         className={'ico-btn sort-btn'}
                                                     >
-                                                        <Icon type="bars" />
+                                                        <BarsOutlined />
                                                     </div>
                                                 </Tooltip>
                                                 <div className={`${iconClassName}`}></div>
@@ -152,7 +159,7 @@ const ViewValueCom = ({
                                                 />
                                                 <div className={'value-wrap'}>
                                                     <Tooltip placement="top" title={'设置选项值'}>
-                                                        <Icon onClick={(e) => {
+                                                        <SettingOutlined onClick={(e) => {
                                                             e.stopPropagation();
                                                             setSettingDataActive({
                                                                 pId: data.id,
@@ -161,10 +168,10 @@ const ViewValueCom = ({
                                                                 data: item,
                                                                 key: changeMapKey.Select
                                                             })
-                                                        }} className={'value-icon'} type="setting" />
+                                                        }} className={'value-icon'} />
                                                     </Tooltip>
                                                     <Tooltip placement="top" title={'删除选项值'}>
-                                                        <Icon onClick={() => deleteFormItem(item.id) } className={'value-icon'} type="delete" />
+                                                        <DeleteOutlined onClick={() => deleteFormItem(item.id) } className={'value-icon'}/>
                                                     </Tooltip>
                                                 </div>
                                             </div>
@@ -186,12 +193,12 @@ const ViewValueCom = ({
                 <div className={'active-wrap'}>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a onClick={ () => { addOption(data) } }>
-                        <Icon type="file-add" />
+                        <FileAddOutlined />
                         <span>添加单个选项</span>
                     </a>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a onClick={ () => { addOptions(data) } }>
-                        <Icon type="diff" />
+                        <DiffOutlined />
                         <span>批量添加多个选项</span>
                     </a>
                     <Modal
